@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 Ogrenci ogrenci=new Ogrenci();
                 ogrenci.setNumara(Integer.parseInt(editTextNumara.getText().toString()));
                 ogrenci.setAdSoyad(editTextAdSoyad.getText().toString());
-                ogrenciArrayList.add(ogrenci.getNumara()+" "+ogrenci.getAdSoyad());
+                ogrenciArrayList.add(ogrenci.getNumara() + " " + ogrenci.getAdSoyad());
                 adapter.notifyDataSetChanged();
             }
         });
