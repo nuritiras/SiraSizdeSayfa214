@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
@@ -15,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextNumara,editTextAdSoyad;
     Button buttonEkle;
     ListView listViewListe;
-    ArrayList<Ogrenci> ogrenciArrayList= new ArrayList<>();
-    ArrayAdapter<Ogrenci> adapter;
+    ArrayList<String> ogrenciArrayList= new ArrayList<String>();
+    ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +32,13 @@ public class MainActivity extends AppCompatActivity {
                 Ogrenci ogrenci=new Ogrenci();
                 ogrenci.setNumara(Integer.parseInt(editTextNumara.getText().toString()));
                 ogrenci.setAdSoyad(editTextAdSoyad.getText().toString());
-                ogrenciArrayList.add(ogrenci);
+                ogrenciArrayList.add(ogrenci.getNumara()+" "+ogrenci.getAdSoyad());
                 adapter.notifyDataSetChanged();
             }
+        });
+        listViewListe.setOnItemClickListener((adapterView, view, i, l) -> {
+            ogrenciArrayList.remove(i);
+            adapter.notifyDataSetChanged();
         });
     }
 }
